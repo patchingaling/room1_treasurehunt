@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: #2e2222;
+  }
+  
+  body {
+    background-color: #fbf9f9;
+  }
+
+  h1 {
+      text-align: center;
+  }
+  
+  .maze {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
