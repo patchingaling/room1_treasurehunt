@@ -16,8 +16,9 @@ body {
 }
 
 
-h1 {
-    text-align: center;
+.header {
+  padding-top: 1rem;
+  text-align: center;
 }
 
 .finished-maze {
@@ -27,7 +28,7 @@ h1 {
   left: 50%;
   width: 50%;
   height: 30%;
-  background: rgba(213,113,165);
+  background-color: #dff4b0;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -35,16 +36,6 @@ h1 {
   transform: translate(-50%, -50%);
   z-index: 4;
 }
-
-/*.first-child, 
-.sec-child, 
-.play-again, 
-.close-game  {
-  top: 2rem;
-  align-items: center;
-  justify-content: center;
-
-} */
 
 .congrat-msg {
   padding-top: 2rem;
@@ -54,28 +45,49 @@ h1 {
   padding-top: 1rem;
 }
 
+.selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+}
 
+.generate {
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  padding-top: 1rem;
+}
 
-  .selection {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 2rem;
-  }
+.play-again, 
+.close-game,
+#btn-maze {
+  background-color: #dff4b0;
+  border: none;
+  color: #9a72f3;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 15px;
+}
 
-  .generate {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 1rem;
-  }
+.play-again, .close-game {
+  background-color: #9a72f3;
+  color: #dff4b0;
+  margin: 4px 2px;
+  padding: 15px 32px;
+  font-size: 14px;
+}
 
-  .maze {
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-  }
+.maze {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
   

@@ -4,6 +4,7 @@ let newMaze;
 let levelValue; //this is the number of rows and columns
 let mazeCompleted = false;
 let stepCtr = 0;
+let goalReach = false;
 
 const btnMaze = document.getElementById('btn-maze')
 const finishedMaze = document.querySelector(".finished-maze");
@@ -55,10 +56,11 @@ function generateMaze (ev) {
     
     //disable the generate button when maze is generated
     btnMaze.disabled = true;
+
 }
 
 function moveSprite(ev) {
-    if (!mazeCompleted) return;
+    if (!mazeCompleted || goalReach) return;
     let key = ev.key;
     let row = current.rowNum;
     let col = current.colNum;
@@ -124,6 +126,7 @@ function moveSprite(ev) {
 }
 
 function createYouWonDisp (step) {
+    goalReach = true;
     const stepWord = `You took ${step} steps.`;
     secChild.innerText = stepWord;
     finishedMaze.style.display = "block";
@@ -146,25 +149,3 @@ close.addEventListener("click", () => {
     finishedMaze.style.display = "none";
 
 })
-
-
-
-
-
-
-
-//sprite start    
-//current = newMaze.grid[0][0];
-//console.log(current);
-/*document.addEventListener('onkeydown', function (event) {
-    switch (event.keyCode) {
-        case 37: //left
-            console.log('left');
-        case 38: //up
-            console.log('up');
-        case 39: //right
-            console.log('right');
-        case 40: //down
-            console.log('down');
-    }
-});*/
