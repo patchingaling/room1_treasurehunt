@@ -1,13 +1,16 @@
 let maze = document.querySelector(".maze");
 let ctx = maze.getContext("2d");
-
-let current;
 let goal;
-let mazeComplete = false;
 
+
+const spriteImage = new Image();
+spriteImage.src = "./images/sprite.png";
+
+const treasureImage = new Image();
+treasureImage.src = "./images/finishSprite.png";
 class Maze {
-  constructor(rows, columns) {
-    this.size = 500;
+  constructor(size, rows, columns) {
+    this.size = size;
     this.rows = rows;
     this.columns = columns;
     this.grid = [];
@@ -37,9 +40,7 @@ class Maze {
 
     //set the first cell as visited
     current.visited = true;
-    console.log(current);
-
-
+    
     // Loop through the 2d grid array and call the show method for each cell instance
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.columns; c++) {
@@ -55,16 +56,18 @@ class Maze {
     if (next) {
         next.visited = true;
         this.stack.push(current); //adding the current cell in stack for backtracking
+        current.sprite(this.columns);
         current.removeWalls(current, next); // This function compares the current cell to the next cell and removes the relevant walls for each cell
         current = next;
     } else if (this.stack.length > 0) {
         // if there are no neighbours to go through we have to backtrack from the stack
         let cell = this.stack.pop();
         current = cell;
+        current.sprite(this.columns);
     }
 
     if (this.stack.length === 0) {
-        mazeComplete = true;
+        mazeCompleted = true;
         return;
     }
 
@@ -150,6 +153,13 @@ class Cell {
     ctx.stroke();
   }
 
+  sprite(columns) {
+    let x = (this.colNum * this.parentSize) / columns + 1;
+    let y = (this.rowNum * this.parentSize) / columns + 1;
+    //code for the sprite
+    ctx.drawImage(spriteImage, x, y, (this.parentSize / columns) - 3, (this.parentSize / columns) - 3);
+  }  
+
   //This function will compare the current cell to the next cell to identify which walls are to be removed.
   removeWalls (cell1, cell2) {
     let x = cell1.colNum - cell2.colNum; // compares two cells in x-axis
@@ -188,15 +198,10 @@ class Cell {
     if (this.visited) {
       ctx.fillRect(x + 1, y + 1, size / columns - 2, size / rows - 2);
     }
-    if (this.goal) { //change this to the treasure chest 
-        ctx.fillStyle = "rgb(83, 247, 43)"; 
-        ctx.fillRect(x + 1, y + 1, size / columns - 2, size / rows - 2);
+    if (this.goal) { 
+        ctx.drawImage(treasureImage, x + 1, y + 1, (this.parentSize / columns) - 3, (this.parentSize / columns) - 3);
     }
 
   }
 
 }
-
-newMaze = new Maze(10,10);
-newMaze.setup();
-newMaze.draw();

@@ -5,13 +5,23 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
+        <div class="finished-maze">
+            <div class="congrat-msg">
+                <h3 class="first-child">Congratulations! You won!!!</h3>
+                <h4 class="sec-child">You have taken 100 steps!</h4>
+            </div>
+            <div class="btn-play-close">
+                <button class="play-again">Play again</button>
+                <button class="close-game">Close</button>
+            </div> 
+        </div>
         <div class='header'>
             <h1 class='title'>Treasure Hunt</h1>
         </div>
         <!-- for level selection -->
         <div class='selection' id='selection'>
         </div>
-        <div class='Generate'>
+        <div class='generate'>
             <button id='btn-maze'>Generate treasure hunting...</button>
         </div>
         <!-- display maze -->
@@ -19,7 +29,8 @@
             <canvas class='maze'></canvas>
         </div>
 
+        
+        <script src='./settings.js'></script>
         <script src='./maze.js'></script>
-        <!-- <script src='./settings.js'></script> -->
     </body>
 </html>
